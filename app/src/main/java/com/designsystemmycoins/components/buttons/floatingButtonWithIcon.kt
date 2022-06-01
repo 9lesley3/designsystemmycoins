@@ -1,4 +1,4 @@
-package com.example.desingsystemmycoins.components.buttons
+package com.designsystemmycoins.components.buttons
 
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.Icon
@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.desingsystemmycoins.ui.theme.backgroundGreen
+import com.designsystemmycoins.ui.theme.backgroundGreen
 
 @Composable
 fun FloatingButtonWithIcon(
