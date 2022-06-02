@@ -11,15 +11,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.designsystemmycoins.components.dialog.DialogDeleteItem
+import com.designsystemmycoins.components.dropDownList.DropDownList
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
-import com.example.designsystemmycoins.R
 
-class DialogActivity : ComponentActivity() {
+class DropDownListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,7 +29,7 @@ class DialogActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ShowDialog { finish() }
+                    ShowDropDownList { finish() }
                 }
             }
         }
@@ -38,25 +39,37 @@ class DialogActivity : ComponentActivity() {
 
 
 @Composable
-fun ShowDialog(onFinish: () -> Unit) {
+fun ShowDropDownList(onFinish: () -> Unit) {
+    val list = listOf(
+        "FLOR DE CUNHO (FC)",
+        "SOBERBA (S)",
+        "MUITO BEM CONSERVADA (MBC)",
+        "BEM CONSERVADA (BC)",
+        "REGULAR (R)",
+        "GASTA",
+    )
+    val conservationState = remember { mutableStateOf("") }
+    val isOpen = remember { mutableStateOf(true) }
+    val openCloseOfDropDownList: (Boolean) -> Unit = {
+        isOpen.value = it
+        onFinish()
+    }
+    val userSelectedConservationState: (String) -> Unit = {
+        conservationState.value = it
+    }
+
     Box(contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+        modifier = Modifier.padding(16.dp)
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            DialogDeleteItem(
-                R.string.dialog_title,
-                R.string.dialog_primary_sub_title,
-                R.string.dialog_secondary_sub_title,
-                R.string.dialog_primary_button_text,
-                R.string.dialog_secondary_button_text,
-                onPrimaryButton = onFinish,
-                onSecondaryButton = onFinish,
-                showDialog = true,
+            DropDownList(
+                requestToOpen = isOpen.value,
+                list = list,
+                request = openCloseOfDropDownList,
+                selectedString = userSelectedConservationState
             )
         }
     }
@@ -64,6 +77,6 @@ fun ShowDialog(onFinish: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun ShowDialogActivityPreview(){
-    ShowDialog {}
+fun ShowShowDropDownListPreview(){
+    ShowDropDownList {}
 }

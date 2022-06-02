@@ -42,7 +42,7 @@ class ButtonActivity : ComponentActivity() {
 }
 
 @Composable
-fun ShowButton(onClick: () -> Unit) {
+fun ShowButton(onFinish: () -> Unit) {
     Box(contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxSize()
@@ -55,14 +55,14 @@ fun ShowButton(onClick: () -> Unit) {
             FloatingButtonWithIcon(
                 label = "Button",
                 icon = Icons.Filled.Add,
-                onClick = onClick,
+                onClick = onFinish,
             )
 
             GenericButton(
                 buttonName = "Cancel",
                 backgroundColor = backgroundCancelButton,
                 textColor = Color.White,
-                onClick = onClick
+                onClick = onFinish
             )
         }
     }

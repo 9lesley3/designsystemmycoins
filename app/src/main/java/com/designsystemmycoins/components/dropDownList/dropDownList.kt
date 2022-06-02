@@ -21,7 +21,8 @@ fun DropDownList(
 ) {
     DropdownMenu(
         expanded = requestToOpen,
-        onDismissRequest = { request(false) },
+        onDismissRequest = { request(false)
+            request},
         modifier = Modifier.fillMaxWidth()
     ) {
         list.forEach {
