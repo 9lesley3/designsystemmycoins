@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
 import com.designsystemmycoins.activities.ButtonActivity
+import com.designsystemmycoins.activities.DialogActivity
 import com.designsystemmycoins.components.buttons.GenericButton
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
 import com.designsystemmycoins.ui.theme.backgroundCancelButton
@@ -48,39 +49,21 @@ internal fun openButtons(context: Context) {
     startActivity(context, intent, null)
 }
 
-@Composable
-fun OpenDialog() {
-    DesignsystemmycoinsTheme {
-
-    }
+fun openDialog(context: Context) {
+    val intent = Intent(context, DialogActivity::class.java)
+    startActivity(context, intent, null)
 }
 
-@Composable
-fun OpenDropDownList() {
-    DesignsystemmycoinsTheme {
-
-    }
+fun openDropDownList() {
 }
 
-@Composable
-fun OpenInputForm() {
-    DesignsystemmycoinsTheme {
-
-    }
+fun openInputForm() {
 }
 
-@Composable
-fun OpenItemView() {
-    DesignsystemmycoinsTheme {
-
-    }
+fun openItemView() {
 }
 
-@Composable
-fun OpenToolBar() {
-    DesignsystemmycoinsTheme {
-
-    }
+fun openToolBar() {
 }
 
 @Composable
@@ -91,22 +74,22 @@ fun HandleButton(context: Context) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                ShowButton(context)
+                GetButton("Buttons") { openButtons(context) }
+                GetButton("Dialog") { openDialog(context) }
             }
         }
     }
 }
 
 @Composable
-fun ShowButton(context: Context) {
-    GenericButton(
-        buttonName = "Buttons",
+fun GetButton(text: String, onClick: () -> Unit) {
+   return GenericButton(
+        buttonName = text,
         backgroundColor = backgroundCancelButton,
         textColor = Color.White,
-        onClick = { openButtons(context) }
+        onClick = onClick
     )
 }
-
 
 @Preview(showBackground = true)
 @Composable

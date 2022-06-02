@@ -14,13 +14,14 @@ import com.designsystemmycoins.ui.theme.backgroundGreen
 @Composable
 fun FloatingButtonWithIcon(
     label: String,
-    icon: ImageVector
+    icon: ImageVector,
+    onClick: () -> Unit,
 ) {
     ExtendedFloatingActionButton(
         text = {
             Text(text = label)
         },
-        onClick = {},
+        onClick = onClick,
         icon = {
             Icon(icon,"floating button - add icon")
         },
@@ -34,6 +35,7 @@ fun FloatingButtonWithIcon(
 fun FloatingButtonWithIconPreview(){
     FloatingButtonWithIcon(
         label = "Button",
-        icon = Icons.Filled.Add
+        icon = Icons.Filled.Add,
+        onClick = {},
     )
 }

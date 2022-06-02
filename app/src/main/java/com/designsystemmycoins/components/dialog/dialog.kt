@@ -12,6 +12,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,10 +40,13 @@ fun DialogDeleteItem(
     showDialog: Boolean = true
 ) {
 
-    if (showDialog) {
+    val openDialog = remember { mutableStateOf(showDialog) }
+
+    if (openDialog.value) {
         Dialog(
             onDismissRequest = {
                 onSecondaryButton()
+                openDialog.value = false
             }
         ) {
 
@@ -92,7 +97,10 @@ fun DialogDeleteItem(
                             buttonName = stringResource(id = primaryButtonTextRes),
                             backgroundColor = backgroundCancelButton,
                             textColor = Color.White,
-                            onClick = {onPrimaryButton()}
+                            onClick = {
+                                onPrimaryButton()
+                                openDialog.value = false
+                            }
                         )
 
                         // Delete button
@@ -100,7 +108,10 @@ fun DialogDeleteItem(
                             buttonName = stringResource(id = secondaryButtonTextRes),
                             backgroundColor = backgroundDeleteButton,
                             textColor = Color.White,
-                            onClick = { onSecondaryButton() }
+                            onClick = {
+                                onSecondaryButton()
+                                openDialog.value = false
+                            }
                         )
 
                     }
@@ -130,8 +141,8 @@ fun DialogDeleteItemPreview(){
                 R.string.dialog_secondary_sub_title,
                 R.string.dialog_primary_button_text,
                 R.string.dialog_secondary_button_text,
-                onPrimaryButton = { },
-                onSecondaryButton = { },
+                onPrimaryButton = {  },
+                onSecondaryButton = {  },
                 showDialog = true)
         }
     }
