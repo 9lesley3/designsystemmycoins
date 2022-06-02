@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.designsystemmycoins.activities.ButtonActivity
 import com.designsystemmycoins.activities.DialogActivity
 import com.designsystemmycoins.activities.DropDownListActivity
+import com.designsystemmycoins.activities.InputFormActivity
 import com.designsystemmycoins.components.buttons.GenericButton
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
 import com.designsystemmycoins.ui.theme.backgroundCancelButton
@@ -60,7 +61,10 @@ fun openDropDownList(context: Context) {
     startActivity(context, intent, null)
 }
 
-fun openInputForm() {
+fun openInputForm(context: Context) {
+    val intent = Intent(context, InputFormActivity::class.java)
+    startActivity(context, intent, null)
+
 }
 
 fun openItemView() {
@@ -80,6 +84,7 @@ fun HandleButton(context: Context) {
                 GetButton("Buttons") { openButtons(context) }
                 GetButton("Dialog") { openDialog(context) }
                 GetButton("DropDownList") { openDropDownList(context) }
+                GetButton("openInputsForm") { openInputForm(context) }
             }
         }
     }

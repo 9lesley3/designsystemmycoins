@@ -35,8 +35,6 @@ class DialogActivity : ComponentActivity() {
     }
 }
 
-
-
 @Composable
 fun ShowDialog(onFinish: () -> Unit) {
     Box(contentAlignment = Alignment.Center,

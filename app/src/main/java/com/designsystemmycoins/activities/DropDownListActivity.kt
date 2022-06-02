@@ -36,8 +36,6 @@ class DropDownListActivity : ComponentActivity() {
     }
 }
 
-
-
 @Composable
 fun ShowDropDownList(onFinish: () -> Unit) {
     val list = listOf(
@@ -77,6 +75,6 @@ fun ShowDropDownList(onFinish: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun ShowShowDropDownListPreview(){
+fun ShowDropDownListPreview(){
     ShowDropDownList {}
 }

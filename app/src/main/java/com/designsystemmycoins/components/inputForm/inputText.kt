@@ -18,6 +18,7 @@ fun InputText(label: String) {
         value = conservationState.value,
         onValueChange = { conservationState.value = it },
         label = { Text(text = label) },
+        singleLine = true,
         modifier = Modifier
             .fillMaxWidth(),
         shape = RoundedCornerShape(50)
