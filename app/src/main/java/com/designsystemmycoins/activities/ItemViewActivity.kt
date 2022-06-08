@@ -3,7 +3,6 @@ package com.designsystemmycoins.activities
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,14 +15,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.designsystemmycoins.components.inputForm.InputImage
-import com.designsystemmycoins.components.inputForm.InputSelection
-import com.designsystemmycoins.components.inputForm.InputText
+import com.designsystemmycoins.components.itemView.Details
+import com.designsystemmycoins.components.itemView.Item
 import com.designsystemmycoins.components.toolbar.ToolBarOnlyTitle
+import com.designsystemmycoins.data.DetailsData
+import com.designsystemmycoins.data.ItemData
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
 import com.example.designsystemmycoins.R
 
-class InputFormActivity : ComponentActivity() {
+class ItemViewActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -32,8 +32,8 @@ class InputFormActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ToolBarOnlyTitle(toolBarTitle = "Show Inputs Form")
-                    ShowInputForm()
+                    ToolBarOnlyTitle(toolBarTitle = "Show Items")
+                    ShowItemView()
                 }
             }
         }
@@ -42,44 +42,30 @@ class InputFormActivity : ComponentActivity() {
 
 
 @Composable
-fun ShowInputForm() {
-    val conservationStateList = listOf(
-        "FLOR DE CUNHO (FC)",
-        "SOBERBA (S)",
-        "MUITO BEM CONSERVADA (MBC)",
-        "BEM CONSERVADA (BC)",
-        "REGULAR (R)",
-        "GASTA",
-    )
-
+fun ShowItemView() {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxSize()
+        modifier = Modifier.padding(16.dp).fillMaxSize()
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(32.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            InputImage(
-                R.string.image_coin_title,
-                R.drawable.ic_launcher_background,
-                R.drawable.ic_launcher_background
-            )
+            val itemData = ItemData()
+            val detailsData = DetailsData()
 
-            InputSelection(
-                label = "state",
-                list = conservationStateList
-            )
+            Item(itemData)
 
-            InputText("state")
+            Details(
+                titleRes = R.string.item_details_title,
+                description = detailsData
+            )
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun InputFormPreview() {
-    ShowInputForm()
+fun ItemViewPreview() {
+    ShowItemView()
 }

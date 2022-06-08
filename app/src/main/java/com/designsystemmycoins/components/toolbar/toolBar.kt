@@ -3,7 +3,7 @@ package com.designsystemmycoins.components.toolbar
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
+import com.designsystemmycoins.ui.theme.Typography
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -13,12 +13,15 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.designsystemmycoins.ui.theme.backgroundGreen
 
 @Composable
-fun ToolBar(toolBarTitle: String) {
+fun ToolBar(
+    toolBarTitle: String,
+    onCallBackClick: () -> Unit,
+    onIconClick: () -> Unit,
+) {
     Scaffold(
         content = {
             TopAppBar(
@@ -26,12 +29,12 @@ fun ToolBar(toolBarTitle: String) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = toolBarTitle,
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.h6,
+                        style = Typography.h6,
+                        maxLines = 1,
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = onCallBackClick) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "toolbar - back arrow icon"
@@ -39,7 +42,7 @@ fun ToolBar(toolBarTitle: String) {
                     }
                 },
                 actions = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = onIconClick) {
                         Icon(
                             imageVector = Icons.Default.Menu,
                             contentDescription = "toolbar - menu icon"
@@ -58,5 +61,7 @@ fun ToolBar(toolBarTitle: String) {
 fun ToolBarPreview(){
     ToolBar(
         toolBarTitle = "My Coins",
+        onCallBackClick = {},
+        onIconClick = {},
     )
 }

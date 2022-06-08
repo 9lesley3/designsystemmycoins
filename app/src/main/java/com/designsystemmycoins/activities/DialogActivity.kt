@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.designsystemmycoins.components.dialog.DialogDeleteItem
+import com.designsystemmycoins.components.toolbar.ToolBarOnlyTitle
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
 import com.example.designsystemmycoins.R
 
@@ -28,6 +29,7 @@ class DialogActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    ToolBarOnlyTitle(toolBarTitle = "Show Dialog")
                     ShowDialog { finish() }
                 }
             }
@@ -62,6 +64,6 @@ fun ShowDialog(onFinish: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun ShowDialogActivityPreview(){
+fun DialogActivityPreview(){
     ShowDialog {}
 }

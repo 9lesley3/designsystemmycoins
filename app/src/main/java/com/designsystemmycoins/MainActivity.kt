@@ -24,7 +24,10 @@ import com.designsystemmycoins.activities.ButtonActivity
 import com.designsystemmycoins.activities.DialogActivity
 import com.designsystemmycoins.activities.DropDownListActivity
 import com.designsystemmycoins.activities.InputFormActivity
+import com.designsystemmycoins.activities.ItemViewActivity
+import com.designsystemmycoins.activities.ToolBarActivity
 import com.designsystemmycoins.components.buttons.GenericButton
+import com.designsystemmycoins.components.toolbar.ToolBarOnlyTitle
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
 import com.designsystemmycoins.ui.theme.backgroundCancelButton
 
@@ -64,35 +67,44 @@ fun openDropDownList(context: Context) {
 fun openInputForm(context: Context) {
     val intent = Intent(context, InputFormActivity::class.java)
     startActivity(context, intent, null)
-
 }
 
-fun openItemView() {
+fun openItemView(context: Context) {
+    val intent = Intent(context, ItemViewActivity::class.java)
+    startActivity(context, intent, null)
 }
 
-fun openToolBar() {
+fun openToolBar(context: Context) {
+    val intent = Intent(context, ToolBarActivity::class.java)
+    startActivity(context, intent, null)
 }
 
 @Composable
 fun HandleButton(context: Context) {
-    DesignsystemmycoinsTheme {
-        Box(modifier = Modifier.padding(16.dp)) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                GetButton("Buttons") { openButtons(context) }
-                GetButton("Dialog") { openDialog(context) }
-                GetButton("DropDownList") { openDropDownList(context) }
-                GetButton("openInputsForm") { openInputForm(context) }
-            }
+    ToolBarOnlyTitle(toolBarTitle = "Design System")
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            GetButton("Buttons") { openButtons(context) }
+            GetButton("Dialog") { openDialog(context) }
+            GetButton("DropDownList") { openDropDownList(context) }
+            GetButton("InputsForm") { openInputForm(context) }
+            GetButton("ItemView") { openItemView(context) }
+            GetButton("ToolBar") { openToolBar(context) }
         }
     }
 }
 
 @Composable
 fun GetButton(text: String, onClick: () -> Unit) {
-   return GenericButton(
+    return GenericButton(
         buttonName = text,
         backgroundColor = backgroundCancelButton,
         textColor = Color.White,

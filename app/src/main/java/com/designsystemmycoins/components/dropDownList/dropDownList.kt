@@ -21,8 +21,10 @@ fun DropDownList(
 ) {
     DropdownMenu(
         expanded = requestToOpen,
-        onDismissRequest = { request(false)
-            request},
+        onDismissRequest = {
+            request(false)
+            request
+        },
         modifier = Modifier.fillMaxWidth()
     ) {
         list.forEach {
@@ -33,7 +35,11 @@ fun DropDownList(
                     selectedString(it)
                 }
             ) {
-                Text(text = it, textAlign = TextAlign.Start)
+                Text(
+                    text = it,
+                    textAlign = TextAlign.Start,
+                    maxLines = 1,
+                )
             }
         }
     }
@@ -41,7 +47,7 @@ fun DropDownList(
 
 @Preview(showBackground = true)
 @Composable
-fun DropDownListPreview(){
+fun DropDownListPreview() {
     val list = listOf(
         "FLOR DE CUNHO (FC)",
         "SOBERBA (S)",

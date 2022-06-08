@@ -25,8 +25,8 @@ import com.designsystemmycoins.data.ItemData
 @Composable
 fun Item(
     item: ItemData
-){
-    Column (
+) {
+    Column(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Row(
@@ -46,14 +46,33 @@ fun Item(
             )
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-            ){
-                Text(text = item.title)
+            ) {
+                Text(
+                    text = item.title,
+                    maxLines = 1,
+                )
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ){
-                    Text(text = item.value.toString(), fontSize = 12.sp, fontWeight = FontWeight.Light)
-                    Text(text = item.year.toString(), fontSize = 12.sp, fontWeight = FontWeight.Light)
-                    Text(text = item.conservationState, fontSize = 12.sp, fontWeight = FontWeight.Light, modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp))
+                ) {
+                    Text(
+                        text = item.value.toString(),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Light,
+                         maxLines = 1,
+                    )
+                    Text(
+                        text = item.year.toString(),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Light,
+                         maxLines = 1,
+                    )
+                    Text(
+                        text = item.conservationState,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Light,
+                        modifier = Modifier.padding(0.dp, 0.dp, 4.dp, 0.dp),
+                         maxLines = 1,
+                    )
                 }
             }
             Icon(
@@ -67,7 +86,7 @@ fun Item(
 
 @Preview(showBackground = true)
 @Composable
-fun ItemPreview(){
+fun ItemPreview() {
     val itemData = ItemData()
     Item(itemData)
 }

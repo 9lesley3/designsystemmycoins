@@ -47,6 +47,7 @@ fun InputImage(
                     .fillMaxWidth()
                     .fillMaxHeight(),
                 color = textColorGrey,
+                maxLines = 1,
             )
         }
 

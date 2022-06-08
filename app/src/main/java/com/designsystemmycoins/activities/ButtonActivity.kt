@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.designsystemmycoins.components.buttons.FloatingButtonWithIcon
 import com.designsystemmycoins.components.buttons.GenericButton
+import com.designsystemmycoins.components.toolbar.ToolBarOnlyTitle
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
 import com.designsystemmycoins.ui.theme.backgroundCancelButton
 
@@ -32,6 +33,7 @@ class ButtonActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    ToolBarOnlyTitle(toolBarTitle = "Show Buttons")
                     ShowButton { finish() }
                 }
             }
@@ -68,6 +70,6 @@ fun ShowButton(onFinish: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun ShowButtonPreview(){
+fun ButtonPreview(){
     ShowButton {}
 }

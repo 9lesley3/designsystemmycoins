@@ -41,6 +41,7 @@ fun Details(titleRes: Int, description: DetailsData){
                 text = stringResource(id = titleRes),
                 modifier = Modifier.align(Alignment.Center),
                 color = Color.White,
+                maxLines = 1,
             )
         }
 
@@ -52,6 +53,7 @@ fun Details(titleRes: Int, description: DetailsData){
                     .height(20.dp)
                     .padding(4.dp, 0.dp, 0.dp, 4.dp),
                 color = textColorGrey,
+                maxLines = 1,
             )
         }
     }

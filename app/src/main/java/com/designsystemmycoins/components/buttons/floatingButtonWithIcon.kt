@@ -19,11 +19,11 @@ fun FloatingButtonWithIcon(
 ) {
     ExtendedFloatingActionButton(
         text = {
-            Text(text = label)
+            Text(text = label, maxLines = 1)
         },
         onClick = onClick,
         icon = {
-            Icon(icon,"floating button - add icon")
+            Icon(icon, "floating button - add icon")
         },
         backgroundColor = backgroundGreen,
         contentColor = Color.White
@@ -32,7 +32,7 @@ fun FloatingButtonWithIcon(
 
 @Preview(showBackground = true)
 @Composable
-fun FloatingButtonWithIconPreview(){
+fun FloatingButtonWithIconPreview() {
     FloatingButtonWithIcon(
         label = "Button",
         icon = Icons.Filled.Add,

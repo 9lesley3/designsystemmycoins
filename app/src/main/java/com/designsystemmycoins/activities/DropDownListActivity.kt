@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.designsystemmycoins.components.dropDownList.DropDownList
+import com.designsystemmycoins.components.toolbar.ToolBarOnlyTitle
 import com.designsystemmycoins.ui.theme.DesignsystemmycoinsTheme
 
 class DropDownListActivity : ComponentActivity() {
@@ -29,6 +30,7 @@ class DropDownListActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    ToolBarOnlyTitle(toolBarTitle = "Show DropDown List")
                     ShowDropDownList { finish() }
                 }
             }
@@ -57,7 +59,7 @@ fun ShowDropDownList(onFinish: () -> Unit) {
     }
 
     Box(contentAlignment = Alignment.Center,
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(16.dp).fillMaxSize()
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -75,6 +77,6 @@ fun ShowDropDownList(onFinish: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun ShowDropDownListPreview(){
+fun DropDownListPreview(){
     ShowDropDownList {}
 }

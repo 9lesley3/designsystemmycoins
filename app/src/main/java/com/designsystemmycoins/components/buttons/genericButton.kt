@@ -21,8 +21,9 @@ fun GenericButton(
     textColor: Color,
     onClick: () -> Unit,
 
-) {
-    Button(onClick = onClick,
+    ) {
+    Button(
+        onClick = onClick,
         shape = RoundedCornerShape(20),
         contentPadding = PaddingValues(2.dp),
         colors = ButtonDefaults.textButtonColors(
@@ -31,13 +32,13 @@ fun GenericButton(
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(buttonName, style = typography.button)
+        Text(buttonName, style = typography.button, maxLines = 1)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GenericButtonPreview(){
+fun GenericButtonPreview() {
     GenericButton(
         buttonName = "Cancel",
         backgroundColor = backgroundCancelButton,
