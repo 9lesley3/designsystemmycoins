@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.designsystemmycoins.data.DetailsData
@@ -32,14 +33,14 @@ fun Details(titleRes: Int, description: DetailsData){
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(20.dp)
+                .height(30.dp)
                 .background(backgroundGreen)
-                .padding(0.dp, 0.dp, 0.dp, 4.dp)
+                .padding(0.dp, 0.dp, 0.dp, 4.dp),
+            contentAlignment = Alignment.Center
 
         ) {
             Text(
                 text = stringResource(id = titleRes),
-                modifier = Modifier.align(Alignment.Center),
                 color = Color.White,
                 maxLines = 1,
             )
@@ -50,8 +51,8 @@ fun Details(titleRes: Int, description: DetailsData){
                 text = description.key + " : " + description.value.toString(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(20.dp)
-                    .padding(4.dp, 0.dp, 0.dp, 4.dp),
+                    .height(30.dp)
+                    .padding(8.dp, 0.dp, 0.dp, 4.dp),
                 color = textColorGrey,
                 maxLines = 1,
             )
