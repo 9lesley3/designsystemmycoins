@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">sampleapp</string>
+    <string name="image_coin_title">Fotos da Moeda</string>
+
+    <!--        Dialog      -->
+    <string name="dialog_title">Deseja deletar esta moeda?</string>
+    <string name="dialog_primary_sub_title">Moeda de um real</string>
+    <string name="dialog_secondary_sub_title">R$ 1,00 | 2019 | FC</string>
+    <string name="dialog_primary_button_text">CANCELAR</string>
+    <string name="dialog_secondary_button_text">DELETAR</string>
+
+    <!--    -->
+    <string name="item_details_title">Detalhes</string>
+</resources>
